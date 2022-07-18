@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Welcome to Feature Flags!</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-tooltip@3.0.2/dist/css/bulma-tooltip.min.css">
+        <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+        <script crossorigin="anonymous" src="https://cdn.jsDelivr.net/npm/launchdarkly-js-client-sdk@2.22.1"></script>
+        <script src="{{ url_for('static', filename='main.js') }}"></script>
+        </head>
+    <body>
+        <section class="hero">
+            <div class="hero-body">
+                <div class="container">
+                    <!-- <h1 class="title">spacebook</h1>
+                    <p class="subtitle">
+                        Demonstrating feature flags through a fictional Shipping API
+                    </p> -->
+                    <div class="columns is-centered">
+                        <div class="column is-two-fifths">
+                            {% if new_layout == False %}
+                                <div class="box has-background-info has-text-white has-text-weight-medium is-size-4">spacebook</div>
+                                <div class="box">
+                                    <div class="columns">
+                                        <div class="column">
+                                            <div class="image is-32x32">
+                                                <img class="is-rounded" src="https://secure.gravatar.com/avatar/ccfaba263d3e75263248b761dc2f3252?size=80"/>
+                                            </div>
+                                        </div>
+                                        <div class="column is-full">
+                                            <div class="has-text-weight-medium">Kevin Cochran</div>
+                                            <div class="is-size-7">21h - Roatan, Honduras</div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        It's a great day in paradise!
+                                    </div>
+                                    <div>
+                                        <img src="static/img/cruise-ship.jpg"/>
+                                    </div>
+                                    <div class="mt-0 p-6">
+                                        {% if enable_ratings == True %}
+                                        <div class="mt-0 p-6">
+                                            <img src="static/img/stars.png" style="height:24px; width:96px" alt="Rate this post" onclick="alert('Error 116: Database inaccessible');" />
+                                        </div>
+                                        {% else %}
+                                        <div class="ml-2 mt-0 p-2">
+                                            <img src="static/img/thumb.png" style="height:24px; width:24px" />
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="box">
+                                    <div class="columns">
+                                        <div class="column">
+                                            <div class="image is-32x32">
+                                                <img class="is-rounded" src="https://secure.gravatar.com/avatar/ccfaba263d3e75263248b761dc2f3252?size=80"/>
+                                            </div>
+                                        </div>
+                                        <div class="column is-full">
+                                            <div class="has-text-weight-medium">Kevin Cochran</div>
+                                            <div class="is-size-7">6d - Atlanta, Georgia</div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        Fun day out at the track!
+                                    </div>
+                                    <div>
+                                        <img src="static/img/race-track.jpg"/>
+                                    </div>
+                                    <div class="mt-0 p-6">
+                                        {% if enable_ratings == True %}
+                                        <div class="mt-0 p-6">
+                                            <img src="static/img/stars.png" style="height:24px; width:96px" alt="Rate this post" onclick="alert('Error 116: Database inaccessible');" />
+                                        </div>
+                                        {% else %}
+                                        <div class="ml-2 mt-0 p-2">
+                                            <img src="static/img/thumb.png" style="height:24px; width:24px" />
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% else %}
+                            <div class="box has-background-info has-text-white has-text-weight-medium is-size-4">spacebook</div>
+                            <div class="box mb-0 has-background-info-light">
+                                <div class="columns mb-0">
+                                    <div class="column">
+                                        <div class="image is-32x32">
+                                            <img class="is-rounded" src="https://secure.gravatar.com/avatar/ccfaba263d3e75263248b761dc2f3252?size=80"/>
+                                        </div>
+                                    </div>
+                                    <div class="column has-text-right">
+                                        <div class="has-text-weight-medium">Kevin Cochran</div>
+                                        <div class="is-size-7">21h - Roatan, Honduras</div>
+                                    </div>
+                                </div>
+                                <div>
+                                    It's a great day in paradise!
+                                </div>
+                            </div>
+                            <div class="image mb-0 pb-0">
+                                <img src="static/img/cruise-ship.jpg"/>
+                            </div>
+                            <div class="has-background-info-light mb-6">
+                                {% if enable_ratings == True %}
+                                <div class="block p-6">
+                                    <img src="static/img/stars.png" style="height:24px; width:96px" alt="Rate this post" onclick="alert('Error 116: Database inaccessible');" />
+                                </div>
+                                {% else %}
+                                <div class="ml-2 mt-0 p-2">
+                                    <img src="static/img/thumb.png" style="height:24px; width:24px" />
+                                </div>
+                                {% endif %}
+                            </div>
+                            <div class="box mb-0 has-background-info-light">
+                                <div class="columns mb-0">
+                                    <div class="column">
+                                        <div class="image is-32x32">
+                                            <img class="is-rounded" src="https://secure.gravatar.com/avatar/ccfaba263d3e75263248b761dc2f3252?size=80"/>
+                                        </div>
+                                    </div>
+                                    <div class="column has-text-right">
+                                        <div class="has-text-weight-medium">Kevin Cochran</div>
+                                        <div class="is-size-7">6d - Atlanta, Georgia</div>
+                                    </div>
+                                </div>
+                                <div>
+                                    Fun day out at the track!
+                                </div>
+                            </div>
+                            <div class="image mb-0 pb-0">
+                                <img src="static/img/race-track.jpg"/>
+                            </div>
+                            <div class="has-background-info-light mb-6">
+                                {% if enable_ratings == True %}
+                                <div class="mt-0 p-6">
+                                    <img src="static/img/stars.png" style="height:24px; width:96px" alt="Rate this post" onclick="alert('Error 116: Database inaccessible');" />
+                                </div>
+                                {% else %}
+                                <div class="ml-2 mt-0 p-2">
+                                    <img src="static/img/thumb.png" style="height:24px; width:24px" />
+                                </div>
+                                {% endif %}
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
