@@ -21,8 +21,8 @@
                     </p> -->
                     <div class="columns is-centered">
                         <div class="column is-two-fifths">
-                            {% if new_layout == False %}
-                                <div class="box has-background-info has-text-white has-text-weight-medium is-size-4">spacebook</div>
+                            <div id="original-layout" style="display:{{ 'none' if new_layout else 'block' }};">
+                                <div id="main-header" class="box {{ heading_color }} has-text-white has-text-weight-medium is-size-4">spacebook</div>
                                 <div class="box">
                                     <div class="columns">
                                         <div class="column">
@@ -42,15 +42,12 @@
                                         <img src="static/img/cruise-ship.jpg"/>
                                     </div>
                                     <div class="mt-0 p-6">
-                                        {% if enable_ratings == True %}
-                                        <div class="mt-0 p-6">
+                                        <div class="mt-0 p-6" id="new-ratings" style="display:{{ 'block' if enable_rating else 'none' }};">
                                             <img src="static/img/stars.png" style="height:24px; width:96px" alt="Rate this post" onclick="alert('Error 116: Database inaccessible');" />
                                         </div>
-                                        {% else %}
-                                        <div class="ml-2 mt-0 p-2">
+                                        <div class="ml-2 mt-0 p-2" id="old-likes" style="display:{{ 'none' if enable_rating else 'block' }};">
                                             <img src="static/img/thumb.png" style="height:24px; width:24px" />
                                         </div>
-                                        {% endif %}
                                     </div>
                                 </div>
                                 <div class="box">
@@ -72,80 +69,72 @@
                                         <img src="static/img/race-track.jpg"/>
                                     </div>
                                     <div class="mt-0 p-6">
-                                        {% if enable_ratings == True %}
-                                        <div class="mt-0 p-6">
+                                        <div class="mt-0 p-6" id="new-ratings" style="display:{{ 'block' if enable_rating else 'none' }};">
                                             <img src="static/img/stars.png" style="height:24px; width:96px" alt="Rate this post" onclick="alert('Error 116: Database inaccessible');" />
                                         </div>
-                                        {% else %}
-                                        <div class="ml-2 mt-0 p-2">
+                                        <div class="ml-2 mt-0 p-2" id="old-likes" style="display:{{ 'none' if enable_rating else 'block' }};">
                                             <img src="static/img/thumb.png" style="height:24px; width:24px" />
                                         </div>
-                                        {% endif %}
                                     </div>
                                 </div>
-                            {% else %}
-                            <div class="box has-background-info has-text-white has-text-weight-medium is-size-4">spacebook</div>
-                            <div class="box mb-0 has-background-info-light">
-                                <div class="columns mb-0">
-                                    <div class="column">
-                                        <div class="image is-32x32">
-                                            <img class="is-rounded" src="https://secure.gravatar.com/avatar/ccfaba263d3e75263248b761dc2f3252?size=80"/>
+                            </div>
+                            <div id="new-layout" style="display:{{ 'block' if new_layout else 'none' }};">
+                                <div id="main-header" class="box {{ heading_color }} has-text-white has-text-weight-medium is-size-4">spacebook</div>
+                                <div class="box mb-0 has-background-info-light">
+                                    <div class="columns mb-0">
+                                        <div class="column">
+                                            <div class="image is-32x32">
+                                                <img class="is-rounded" src="https://secure.gravatar.com/avatar/ccfaba263d3e75263248b761dc2f3252?size=80"/>
+                                            </div>
+                                        </div>
+                                        <div class="column has-text-right">
+                                            <div class="has-text-weight-medium">Kevin Cochran</div>
+                                            <div class="is-size-7">21h - Roatan, Honduras</div>
                                         </div>
                                     </div>
-                                    <div class="column has-text-right">
-                                        <div class="has-text-weight-medium">Kevin Cochran</div>
-                                        <div class="is-size-7">21h - Roatan, Honduras</div>
+                                    <div>
+                                        It's a great day in paradise!
                                     </div>
                                 </div>
-                                <div>
-                                    It's a great day in paradise!
+                                <div class="image mb-0 pb-0">
+                                    <img src="static/img/cruise-ship.jpg"/>
                                 </div>
-                            </div>
-                            <div class="image mb-0 pb-0">
-                                <img src="static/img/cruise-ship.jpg"/>
-                            </div>
-                            <div class="has-background-info-light mb-6">
-                                {% if enable_ratings == True %}
-                                <div class="block p-6">
-                                    <img src="static/img/stars.png" style="height:24px; width:96px" alt="Rate this post" onclick="alert('Error 116: Database inaccessible');" />
+                                <div class="has-background-info-light mb-6">
+                                    <div class="block p-6" id="new-ratings" style="display:{{ 'block' if enable_rating else 'none' }};">
+                                        <img src="static/img/stars.png" style="height:24px; width:96px" alt="Rate this post" onclick="alert('Error 116: Database inaccessible');" />
+                                    </div>
+                                    <div class="ml-2 mt-0 p-2" id="old-likes" style="display:{{ 'none' if enable_rating else 'block' }};">
+                                        <img src="static/img/thumb.png" style="height:24px; width:24px" />
+                                    </div>
                                 </div>
-                                {% else %}
-                                <div class="ml-2 mt-0 p-2">
-                                    <img src="static/img/thumb.png" style="height:24px; width:24px" />
-                                </div>
-                                {% endif %}
-                            </div>
-                            <div class="box mb-0 has-background-info-light">
-                                <div class="columns mb-0">
-                                    <div class="column">
-                                        <div class="image is-32x32">
-                                            <img class="is-rounded" src="https://secure.gravatar.com/avatar/ccfaba263d3e75263248b761dc2f3252?size=80"/>
+                                <div class="box mb-0 has-background-info-light">
+                                    <div class="columns mb-0">
+                                        <div class="column">
+                                            <div class="image is-32x32">
+                                                <img class="is-rounded" src="https://secure.gravatar.com/avatar/ccfaba263d3e75263248b761dc2f3252?size=80"/>
+                                            </div>
+                                        </div>
+                                        <div class="column has-text-right">
+                                            <div class="has-text-weight-medium">Kevin Cochran</div>
+                                            <div class="is-size-7">6d - Atlanta, Georgia</div>
                                         </div>
                                     </div>
-                                    <div class="column has-text-right">
-                                        <div class="has-text-weight-medium">Kevin Cochran</div>
-                                        <div class="is-size-7">6d - Atlanta, Georgia</div>
+                                    <div>
+                                        Fun day out at the track!
                                     </div>
                                 </div>
-                                <div>
-                                    Fun day out at the track!
+                                <div class="image mb-0 pb-0">
+                                    <img src="static/img/race-track.jpg"/>
+                                </div>
+                                <div class="has-background-info-light mb-6">
+                                    <div class="mt-0 p-6" id="new-ratings" style="display:{{ 'block' if enable_rating else 'none' }};">
+                                        <img src="static/img/stars.png" style="height:24px; width:96px" alt="Rate this post" onclick="alert('Error 116: Database inaccessible');" />
+                                    </div>
+                                    <div class="ml-2 mt-0 p-2" id="old-likes" style="display:{{ 'none' if enable_rating else 'block' }};">
+                                        <img src="static/img/thumb.png" style="height:24px; width:24px" />
+                                    </div>
                                 </div>
                             </div>
-                            <div class="image mb-0 pb-0">
-                                <img src="static/img/race-track.jpg"/>
-                            </div>
-                            <div class="has-background-info-light mb-6">
-                                {% if enable_ratings == True %}
-                                <div class="mt-0 p-6">
-                                    <img src="static/img/stars.png" style="height:24px; width:96px" alt="Rate this post" onclick="alert('Error 116: Database inaccessible');" />
-                                </div>
-                                {% else %}
-                                <div class="ml-2 mt-0 p-2">
-                                    <img src="static/img/thumb.png" style="height:24px; width:24px" />
-                                </div>
-                                {% endif %}
-                            </div>
-                            {% endif %}
                         </div>
                     </div>
                 </div>
