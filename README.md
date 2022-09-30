@@ -12,22 +12,31 @@ fly, and turn them of as necessary.
   * `enableRatings`
   * `newLayout`
 
-2. Clone this repo and navigate to its directory in a terminal
+1. Clone this repo and navigate to its directory in a terminal
 
-3. From the terminal, run: `pip install -r requirements.txt`
+1. From the terminal, run: `pip install -r requirements.txt`
 
-4. Next, run: `mv app.ini.example app.ini`
+1. Next, run: `mv app.ini.example app.ini`
 
-5. Open the `app.ini` file and replace the fake SDK key with your SDK key
+1. Open the `app.ini` file and replace the fake SDK key with your SDK key
 ```
 [App]
 SDKKey=YOUR_KEY_HERE
 ```
 
-6. From the terminal, run: `python app.py`
+1. From the terminal, run: `python app.py`
 
-7. In your browser, navigate to http://127.0.0.1:5000
+1. In your browser, navigate to http://127.0.0.1:5000
 
-8. Toggle feature flags in LaunchDarkly and refresh the browser to view various shipping rates
+1. Next, run: `mv monitor.ini.example monitor.ini`
+
+1. Open the `monitor.ini` file and replace the fake API key with your API key
+```
+[App]
+APIKey=YOUR_KEY_HERE
+```
+1. In another terminal, run `python monitor.py`
+
+1. When you turn on the `enableRatings` flag, the monitor will catch an error and automatically disable the flag
 
 Enjoy!

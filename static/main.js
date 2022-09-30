@@ -41,6 +41,7 @@ client.on('change', (settings) => {
             newRatings.forEach(element => {
                 element.style.display = "block";
             });
+            breaker();
         } else {
             newRatings.forEach(element => {
                 element.style.display = "none";
@@ -77,4 +78,27 @@ client.on('change', (settings) => {
         });
     }
 });
-  
+
+function killit() {
+    var xhr = new XMLHttpRequest();
+    var url = "http://localhost:5000/killit";
+    xhr.open("GET", url, true);
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+        }
+    }
+    xhr.send();
+}
+
+function delay(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
+}
+
+function breaker() {
+    for (var i = 0; i < 5; i++) {
+        killit();
+        delay(200).then(() => console.log('delayed 200ms'));
+    }
+
+}
