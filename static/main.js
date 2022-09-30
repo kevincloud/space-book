@@ -41,7 +41,6 @@ client.on('change', (settings) => {
             newRatings.forEach(element => {
                 element.style.display = "block";
             });
-            breaker();
         } else {
             newRatings.forEach(element => {
                 element.style.display = "none";
@@ -101,4 +100,9 @@ function breaker() {
         delay(200).then(() => console.log('delayed 200ms'));
     }
 
+}
+
+function giveError() {
+    breaker();
+    alert('Error 116: Database inaccessible');
 }

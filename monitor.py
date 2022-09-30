@@ -23,18 +23,20 @@ except:
 
 
 def action(flagname):
-    api_url = "https://app.launchdarkly.com/api/v2/flags/" + PROJECT_KEY + "/" + flagname
-    payload = {
-        "environmentKey": "test",
-        "instructions": [{"kind": "turnFlagOff"}]
-    }
-    headers = {
-        "Content-Type": "application/json; domain-model=launchdarkly.semanticpatch",
-        "Authorization": api_key
-    }
-    response = requests.patch(api_url, json=payload, headers=headers)
-    data = response.json()
-    # print(data)
+    api_url = "https://app.launchdarkly.com/webhook/triggers/63372b2dc4867610e969c316/c2c771cd-b3ff-408e-b3bb-2b81be021499"
+    # api_url = "https://app.launchdarkly.com/api/v2/flags/" + PROJECT_KEY + "/" + flagname
+    # payload = {
+    #     "environmentKey": "test",
+    #     "instructions": [{"kind": "turnFlagOff"}]
+    # }
+    # headers = {
+    #     "Content-Type": "application/json; domain-model=launchdarkly.semanticpatch",
+    #     "Authorization": api_key
+    # }
+    # response = requests.patch(api_url, json=payload, headers=headers)
+    response = requests.post(api_url)
+    # data = response.json()
+    print(response)
     print("Error found. " + flagname + " was automatically disabled")
 
 

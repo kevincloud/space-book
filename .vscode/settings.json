@@ -1,0 +1,4 @@
+{
+    "launchdarkly.project": "rustoleum",
+    "launchdarkly.env": "test"
+}
